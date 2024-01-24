@@ -1,2 +1,2 @@
 # TerminalClient
-A terminal client for PearHarmony per to per chat
+A terminal client for PearHarmony peer to peer chat
