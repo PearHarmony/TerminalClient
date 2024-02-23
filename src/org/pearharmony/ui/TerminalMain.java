@@ -10,4 +10,10 @@ public class TerminalMain {
         this.ctrl = ctrl;
         System.out.println("Das ist das terminal interface!");
     }
+
+    public void startConsoleInput(){
+        TerminalRead read = new TerminalRead();
+        Thread readThread = new Thread(read);
+        readThread.start();
+    }
 }
