@@ -16,6 +16,11 @@ public class Control {
         ui.startConsoleInput();
         while (true) {
             System.out.println("Das ist ein test");
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
         }
     }
 

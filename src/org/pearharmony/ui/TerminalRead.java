@@ -8,7 +8,7 @@ public class TerminalRead implements Runnable {
 
     @Override
     public void run() {
-        while(true) {string();}
+        while(true) {System.out.println(string());}
     }
 
     private String string(){
