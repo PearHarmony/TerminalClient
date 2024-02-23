@@ -1,5 +1,5 @@
 package org.pearharmony.data;
 
-public class dataMain {
+public class DataMain {
     
 }
