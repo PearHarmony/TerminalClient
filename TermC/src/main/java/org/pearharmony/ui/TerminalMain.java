@@ -11,17 +11,17 @@ import java.io.IOException;
 public class TerminalMain {
 
     // Basig Terminal
-    Control ctrl;
-    DefaultTerminalFactory termFactory;
-    Terminal term;
-    TerminalScreen termScreen;
-    Panel contentPanel;
-    GridLayout grid;
-    Window window;
-    WindowBasedTextGUI gui;
+    private Control ctrl;
+    private DefaultTerminalFactory termFactory;
+    private Terminal term;
+    private TerminalScreen termScreen;
+    private Panel contentPanel;
+    private GridLayout grid;
+    private Window window;
+    private WindowBasedTextGUI gui;
 
     // GUI Content
-    TextBox msgBox;
+    private TextBox msgBox;
     
     public TerminalMain(Control ctrl) {
         this.ctrl = ctrl;
@@ -29,7 +29,7 @@ public class TerminalMain {
         createTerminal();
     }
 
-    public void createTerminal() {
+    private void createTerminal() {
         termFactory = new DefaultTerminalFactory();
 
         try {
@@ -57,7 +57,7 @@ public class TerminalMain {
         initDefaultScreen();
     }
 
-    public void initDefaultScreen() {
+    private void initDefaultScreen() {
         msgBox = new TextBox(new TerminalSize(50,1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END, GridLayout.Alignment.CENTER));
         msgBox.setReadOnly(false);
         Button btn = new Button("Send");
