@@ -12,16 +12,6 @@ public class Control {
         ui = new TerminalMain(this);
         data = new DataMain();
         System.out.println("This is controling somthing!");
-
-        ui.startConsoleInput();
-        while (true) {
-            System.out.println("Das ist ein test");
-            try {
-                Thread.sleep(500);
-            } catch (Exception e) {
-                // TODO: handle exception
-            }
-        }
     }
 
     public void test() {
