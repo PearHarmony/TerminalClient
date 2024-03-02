@@ -100,7 +100,7 @@ public class TerminalMain {
             public void run() { runFunc.timerTick(); }
         };
         timerUnit = new Timer();
-        timerUnit.schedule(taskTimer, 10, 10);
+        timerUnit.schedule(taskTimer, 2000, 10);
 
         try {
             gui.updateScreen();

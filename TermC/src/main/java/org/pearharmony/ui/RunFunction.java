@@ -31,6 +31,7 @@ public class RunFunction {
     }
 
     public void timerTick(){
-        System.out.println("Tick");
+        String latestMsg = ctrl.getLatestMsgData();
+        if(!latestMsg.isEmpty()) msgHistory.addLine(latestMsg);
     }
 }

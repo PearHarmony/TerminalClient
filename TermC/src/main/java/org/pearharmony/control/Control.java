@@ -9,12 +9,20 @@ public class Control {
     DataMain data;
     
     public Control() {
-        ui = new TerminalMain(this);
         data = new DataMain();
-        System.out.println("This is controling somthing!");
+        initControl();
+        ui = new TerminalMain(this);
+    }
+
+    private void initControl(){
+        System.out.println("Control INIT!");
     }
 
     public void executeCommand(String command) {
         System.out.println(command);
+    }
+
+    public String getLatestMsgData(){
+        return data.readAndDelTransMsg();
     }
 }

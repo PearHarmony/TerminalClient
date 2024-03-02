@@ -1,7 +1,14 @@
 package org.pearharmony.data;
 
 public class DataMain {
+    private MsgTrans msgTrans;
     public DataMain() {
-        System.out.println("this data!");
+        msgTrans = new MsgTrans();
+    }
+
+    public String readAndDelTransMsg() {
+        String msg = msgTrans.getMsg();
+        msgTrans.delMsg(msg);
+        return msg;
     }
 }
