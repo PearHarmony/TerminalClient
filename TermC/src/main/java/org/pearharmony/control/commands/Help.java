@@ -28,6 +28,7 @@ public class Help extends Command {
                 -> /help - shows this dialog\s
                 -> /contact - add, edit or remove a contact from your address book\s
                 -> /clear-history - clear massage history\s
+                -> /info - display program info\s
                 ->\s
                 -> Actions:\s
                 -> ctrl + c - quit PearHarmony TerminalClient""");
