@@ -8,6 +8,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import org.pearharmony.control.Control;
+import org.pearharmony.ui.lanternaFix.AutoScrollTextBox;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -24,8 +25,8 @@ public class TerminalMain {
     private Window window;
     private WindowBasedTextGUI gui;
 
-    // global history -> possibly be edited out of context
-    private TextBox msgHistory;
+    // global history -> possibly be edited out of context // using a custom implementation of TextBox
+    private AutoScrollTextBox msgHistory;
 
     public TerminalMain(Control ctrl) {
         this.ctrl = ctrl;
@@ -79,22 +80,20 @@ public class TerminalMain {
         Button.Listener btnLis = button -> runFunc.pressSendButton(); // create button listener as lambda expressions
         sendBtn.addListener(btnLis); // bind listener
 
-        msgHistory = new TextBox( // message history box
-                new TerminalSize(80, 18)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
-                GridLayout.Alignment.CENTER));
+        msgHistory = new AutoScrollTextBox( // message history box
+                new TerminalSize(80, 18));
         msgHistory.setReadOnly(true); // disable user input
 
         // add components to grid row 0
-        contentPanel.addComponent(msgHistory);
-        contentPanel.addComponent(new EmptySpace().setLayoutData(GridLayout.createHorizontallyFilledLayoutData(2)));
+        contentPanel.addComponent(msgBox);
+        contentPanel.addComponent(sendBtn);
 
         // add components to grid row 1 (spacer)
         contentPanel.addComponent(new EmptySpace().setLayoutData(GridLayout.createHorizontallyFilledLayoutData(3)));
 
         // add components to grid row 2
-        contentPanel.addComponent(msgBox);
-        contentPanel.addComponent(sendBtn);
-
+        contentPanel.addComponent(msgHistory);
+        contentPanel.addComponent(new EmptySpace().setLayoutData(GridLayout.createHorizontallyFilledLayoutData(2)));
 
         // regular timer for receiving msg's
         TimerTask taskTimer = new TimerTask() {
