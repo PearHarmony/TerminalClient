@@ -16,7 +16,7 @@ public abstract class Command {
     // input string split every all spaces
     protected String[] subCommands;
 
-    public Command(TerminalMain ui, String command, String[] subCommands){
+    public Command(TerminalMain ui, String command, String[] subCommands) {
         this.ui = ui;
         this.command = command;
         this.subCommands = subCommands;

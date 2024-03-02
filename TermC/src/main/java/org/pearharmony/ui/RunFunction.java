@@ -40,7 +40,7 @@ public class RunFunction {
         msgBox.setText(""); // clear massage box
     }
 
-    public void timerTick(){ // regular timer function
+    public void timerTick() { // regular timer function
         // check for new message and display if new
         String latestMsg = ctrl.getLatestMsgData();
         if(!latestMsg.isEmpty()) {
