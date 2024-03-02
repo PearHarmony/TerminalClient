@@ -22,9 +22,14 @@ public class Help extends Command {
     }
 
     private void displayHelp() {
-        ui.displayText("All commands: \n" +
-                "-> /help - shows this dialog \n" +
-                "-> /contact - add, edit or remove a contact from your address book \n" +
-                "-> /clear-history - clear massage history");
+        ui.displayText("""
+
+                -> All commands:\s
+                -> /help - shows this dialog\s
+                -> /contact - add, edit or remove a contact from your address book\s
+                -> /clear-history - clear massage history\s
+                ->\s
+                -> Actions:\s
+                -> ctrl + c - quit PearHarmony TerminalClient""");
     }
 }
