@@ -7,10 +7,9 @@ public class ClearHistory extends Command {
     private final String commandSyntax = "/clear-history";
 
     public ClearHistory(TerminalMain ui, String[] subCommands) {
-        super(ui, "clear-history");
+        super(ui, "clear-history", subCommands);
         setSyntax(commandSyntax);
 
-        this.subCommands = subCommands;
         decodeCommand();
     }
 

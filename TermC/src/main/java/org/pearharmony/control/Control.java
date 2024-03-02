@@ -2,6 +2,7 @@ package org.pearharmony.control;
 
 import org.pearharmony.control.commands.ClearHistory;
 import org.pearharmony.control.commands.Contact;
+import org.pearharmony.control.commands.Help;
 import org.pearharmony.ui.TerminalMain;
 import org.pearharmony.data.DataMain;
 
@@ -26,6 +27,7 @@ public class Control {
         switch (splitCommand[0]) {
             case "/contact" -> new Contact(ui, splitCommand);
             case "/clear-history" -> new ClearHistory(ui, splitCommand);
+            case "/help" -> new Help(ui, splitCommand);
             default -> ui.displayError(1);
         }
     }

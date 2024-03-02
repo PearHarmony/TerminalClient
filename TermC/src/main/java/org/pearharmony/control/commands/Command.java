@@ -9,9 +9,10 @@ public abstract class Command {
 
     protected String[] subCommands;
 
-    public Command(TerminalMain ui, String command){
+    public Command(TerminalMain ui, String command, String[] subCommands){
         this.ui = ui;
         this.command = command;
+        this.subCommands = subCommands;
     }
 
     protected abstract void decodeCommand();

@@ -6,10 +6,9 @@ public class Contact extends Command {
     private final String commandSyntax = "/contact <add:remove:edit> <name> (<ip>)";
 
     public Contact(TerminalMain ui, String[] subCommands) {
-        super(ui, "contact");
+        super(ui, "contact", subCommands);
         setSyntax(commandSyntax);
 
-        this.subCommands = subCommands;
         decodeCommand();
     }
 
