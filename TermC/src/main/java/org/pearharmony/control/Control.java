@@ -1,5 +1,7 @@
 package org.pearharmony.control;
 
+import org.pearharmony.control.commands.ClearHistory;
+import org.pearharmony.control.commands.Contact;
 import org.pearharmony.ui.TerminalMain;
 import org.pearharmony.data.DataMain;
 
@@ -12,6 +14,7 @@ public class Control {
         data = new DataMain();
         initControl();
         ui = new TerminalMain(this);
+        ui.initUI();
     }
 
     private void initControl(){
@@ -19,10 +22,13 @@ public class Control {
     }
 
     public void executeCommand(String command) {
-        System.out.println(command);
+        String[] splitCommand = command.split("\\s+");
+        switch (splitCommand[0]) {
+            case "/contact" -> new Contact(ui, splitCommand);
+            case "/clear-history" -> new ClearHistory(ui, splitCommand);
+            default -> ui.displayError(1);
+        }
     }
 
-    public String getLatestMsgData(){
-        return data.readAndDelTransMsg();
-    }
+    public String getLatestMsgData() { return data.readAndDelTransMsg(); }
 }

@@ -34,4 +34,6 @@ public class RunFunction {
         String latestMsg = ctrl.getLatestMsgData();
         if(!latestMsg.isEmpty()) msgHistory.addLine(latestMsg);
     }
+
+    public void printTo_msgHistory(String msg) { msgHistory.addLine("#: " + msg); }
 }

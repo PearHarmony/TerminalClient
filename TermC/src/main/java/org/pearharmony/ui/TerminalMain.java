@@ -37,7 +37,9 @@ public class TerminalMain {
     public TerminalMain(Control ctrl) {
         this.ctrl = ctrl;
         runFunc = new RunFunction(ctrl);
+    }
 
+    public void initUI() {
         createTerminal();
         initDefaultScreen();
     }
@@ -70,7 +72,7 @@ public class TerminalMain {
 
     private void initDefaultScreen() {
         msgBox = new TextBox(
-                new TerminalSize(60, 1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
+                new TerminalSize(80, 1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
                 GridLayout.Alignment.CENTER));
         msgBox.setReadOnly(false);
 
@@ -79,7 +81,7 @@ public class TerminalMain {
         sendBtn.addListener(btnLis);
 
         msgHistory = new TextBox(
-                new TerminalSize(60, 18)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
+                new TerminalSize(80, 18)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
                 GridLayout.Alignment.CENTER));
         msgHistory.setReadOnly(true);
 
@@ -113,4 +115,15 @@ public class TerminalMain {
         gui.addWindowAndWait(window);
         System.exit(0);
     }
+
+    public void displayError(int errIndex) {
+        String[] errorMSG = {
+                "generic error",
+                "Command not found!"
+        };
+        runFunc.printTo_msgHistory("Error: " + errorMSG[errIndex]);
+    }
+    public void displayError(String error) { runFunc.printTo_msgHistory("Error: " + error); }
+    public void displayText(String text) { runFunc.printTo_msgHistory("System Massage:" + text); }
+    public void clearHistory() { msgHistory.setText(""); }
 }
