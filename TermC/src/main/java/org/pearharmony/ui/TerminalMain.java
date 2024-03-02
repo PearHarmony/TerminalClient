@@ -6,12 +6,18 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import org.pearharmony.control.Control;
+
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TerminalMain {
 
-    // Basig Terminal
+    // Referenz to control and runFunction
     private Control ctrl;
+    private RunFunction runFunc;
+
+    // Basig Terminal
     private DefaultTerminalFactory termFactory;
     private Terminal term;
     private TerminalScreen termScreen;
@@ -22,11 +28,18 @@ public class TerminalMain {
 
     // GUI Content
     private TextBox msgBox;
-    
+    private Button sendBtn;
+    private TextBox msgHistory;
+
+    //
+    private Timer timerUnit;
+
     public TerminalMain(Control ctrl) {
         this.ctrl = ctrl;
-        System.out.println("Das ist das terminal interface!");
+        runFunc = new RunFunction(ctrl);
+
         createTerminal();
+        initDefaultScreen();
     }
 
     private void createTerminal() {
@@ -44,7 +57,7 @@ public class TerminalMain {
 
             contentPanel = new Panel(new GridLayout(2));
 
-            grid = (GridLayout)contentPanel.getLayoutManager();
+            grid = (GridLayout) contentPanel.getLayoutManager();
             grid.setHorizontalSpacing(3);
 
             window.setComponent(contentPanel);
@@ -53,25 +66,41 @@ public class TerminalMain {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        initDefaultScreen();
     }
 
     private void initDefaultScreen() {
-        msgBox = new TextBox(new TerminalSize(50,1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END, GridLayout.Alignment.CENTER));
+        msgBox = new TextBox(
+                new TerminalSize(60, 1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
+                GridLayout.Alignment.CENTER));
         msgBox.setReadOnly(false);
-        Button btn = new Button("Send");
 
+        sendBtn = new Button("Send");
+        Button.Listener btnLis = button -> runFunc.pressSendButton();
+        sendBtn.addListener(btnLis);
 
+        msgHistory = new TextBox(
+                new TerminalSize(60, 18)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
+                GridLayout.Alignment.CENTER));
+        msgHistory.setReadOnly(true);
+
+        // Grid row 0
+        contentPanel.addComponent(msgHistory);
+        contentPanel.addComponent(new EmptySpace().setLayoutData(GridLayout.createHorizontallyFilledLayoutData(2)));
+
+        // Grid row 1
+        contentPanel.addComponent(new EmptySpace().setLayoutData(GridLayout.createHorizontallyFilledLayoutData(3)));
+
+        // Grid row 2
         contentPanel.addComponent(msgBox);
-        contentPanel.addComponent(btn);
+        contentPanel.addComponent(sendBtn);
 
-        Button.Listener btnLis = button -> {
-            System.out.println(msgBox.getText());
-            msgBox.setText("");
+
+        TimerTask taskTimer = new TimerTask() {
+            @Override
+            public void run() { runFunc.timerTick(); }
         };
-
-        btn.addListener(btnLis);
+        timerUnit = new Timer();
+        timerUnit.schedule(taskTimer, 10, 10);
 
         try {
             gui.updateScreen();
@@ -79,6 +108,9 @@ public class TerminalMain {
             throw new RuntimeException(e);
         }
 
+        runFunc.setupGUIFunction(msgBox, msgHistory);
+
         gui.addWindowAndWait(window);
+        System.exit(0);
     }
 }

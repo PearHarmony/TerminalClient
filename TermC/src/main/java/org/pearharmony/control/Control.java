@@ -14,7 +14,7 @@ public class Control {
         System.out.println("This is controling somthing!");
     }
 
-    public void test() {
-        System.out.println("Das ist eib test");
+    public void executeCommand(String command) {
+        System.out.println(command);
     }
 }
