@@ -9,6 +9,9 @@ import org.pearharmony.control.commands.Info;
 import org.pearharmony.ui.TerminalMain;
 import org.pearharmony.data.DataMain;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Control {
 
     // references to data and ui layer
@@ -22,6 +25,7 @@ public class Control {
         ui.initUI();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void initControl() { // set up the control layer + display program info before UI Start
         System.out.println("""
                 PearHarmony TerminalClient\s
@@ -31,6 +35,10 @@ public class Control {
                 The client is developed in Java using the Java JDK 17, Maven and the Terminal GUI library Lanterna.\s
                 Maven: https://maven.apache.org/ \s
                 Lanterna: https://github.com/mabe02/lanterna""");
+
+        File contacts = new File("contacts");
+        try { contacts.createNewFile(); }
+        catch (IOException e) { throw new RuntimeException(e); }
     }
 
     public void executeCommand(String command) { // execute a command
