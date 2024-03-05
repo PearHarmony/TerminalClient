@@ -8,10 +8,7 @@ public class Info extends Command {
     private final String commandSyntax = "/info";
 
     public Info(TerminalMain ui, String[] subCommand) {
-        super(ui, "info", subCommand);
-        setSyntax(commandSyntax); // set general command syntax for syntax error
-
-        decodeCommand();
+        super(ui, "info", "/info", subCommand);
     }
 
     @Override

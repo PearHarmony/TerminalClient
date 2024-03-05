@@ -11,24 +11,23 @@ public abstract class Command {
 
     // command specific attributes
     protected String command;
-    private String syntax;
+    protected String syntax;
 
     // input string split every all spaces
     protected String[] subCommands;
 
-    public Command(TerminalMain ui, String command, String[] subCommands) {
+    public Command(TerminalMain ui, String command, String syntax, String[] subCommands) {
         this.ui = ui;
         this.command = command;
+        this.syntax = syntax;
         this.subCommands = subCommands;
+
+        decodeCommand();
     }
 
     // function every child needs to decode the command string array
     protected abstract void decodeCommand();
 
-    protected void setSyntax(String syntax) { this.syntax = syntax; }
-
     // syntax error massage derived from the syntax variable
-    protected void errorSyntax() {
-        ui.displayError("Wrong syntax! Use: " + syntax);
-    }
+    protected void errorSyntax() { ui.displayError("Wrong syntax! Use: " + syntax); }
 }

@@ -122,7 +122,8 @@ public class TerminalMain {
     public void displayError(int errIndex) {
         String[] errorMSG = { // simple possible errors without arguments
                 "generic error",
-                "Command not found!"
+                "Command not found!",
+                "The file you tried to send couldn't be found! Please check the path and try again."
         };
         runFunc.printTo_msgHistory("Error: " + errorMSG[errIndex]);
     }
@@ -132,6 +133,13 @@ public class TerminalMain {
 
     // display arbitrary text to msg history
     public void displayText(String text) { runFunc.printTo_msgHistory("System Massage:" + text); }
+
+    public void fileSendImg(String path, String recipient) {
+        runFunc.printTo_msgHistory("You: send image \"" + path + "\" to @" + recipient);
+    }
+    public void fileSendAudio(String path, String recipient) {
+        runFunc.printTo_msgHistory("You: send audio file \"" + path + "\" to @" + recipient);
+    }
 
     // clear message history
     public void clearHistory() { msgHistory.setText(""); }

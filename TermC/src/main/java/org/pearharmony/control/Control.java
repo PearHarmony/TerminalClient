@@ -2,10 +2,7 @@
 
 package org.pearharmony.control;
 
-import org.pearharmony.control.commands.ClearHistory;
-import org.pearharmony.control.commands.Contact;
-import org.pearharmony.control.commands.Help;
-import org.pearharmony.control.commands.Info;
+import org.pearharmony.control.commands.*;
 import org.pearharmony.ui.TerminalMain;
 import org.pearharmony.data.DataMain;
 
@@ -42,12 +39,14 @@ public class Control {
     }
 
     public void executeCommand(String command) { // execute a command
+        command = command.toLowerCase();
         String[] splitCommand = command.split("\\s+"); //split command at space ignore double spaces
         switch (splitCommand[0]) { // all possible commands
             case "/contact" -> new Contact(ui, splitCommand);
             case "/clear-history" -> new ClearHistory(ui, splitCommand);
             case "/help" -> new Help(ui, splitCommand);
             case "/info" -> new Info(ui, splitCommand);
+            case "/send" -> new Send(ui, splitCommand);
             default -> ui.displayError(1); // command not found
         }
     }

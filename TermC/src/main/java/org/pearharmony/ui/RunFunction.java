@@ -30,9 +30,9 @@ public class RunFunction {
     public void pressSendButton() { // send button press action
         String msgText = msgBox.getText();
 
-        if (msgText.matches("^/[^/]*$")) { // match for slash at string start to identify command
+        if (msgText.matches("^/.*")) { // match for slash at string start to identify command
             ctrl.executeCommand(msgText);
-        } else if (msgText.matches("^@[^@]*$")) { // match for at at string start to identify outgoing msg
+        } else if (msgText.matches("^@.*")) { // match for at at string start to identify outgoing msg
             msgHistory.addLineAndAtTheTop("You: " + msgText); // display own msg's
             ctrl.sendMessage(msgText);
         }

@@ -7,23 +7,10 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Contact extends Command {
-    private final String commandSyntax = "/contact <add:remove:edit> <name> (<ip>)";
-
-    private File contacts;
-    private Scanner contactsRead;
+    private final String contactsFilename = "contacts";
 
     public Contact(TerminalMain ui, String[] subCommands) {
-        super(ui, "contact", subCommands);
-        setSyntax(commandSyntax); // set general command syntax for syntax error
-
-        try {
-            contacts = new File("contacts");
-            contactsRead = new Scanner(contacts);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        decodeCommand();
+        super(ui, "contact", "/contact <add:remove:edit> <name> (<ip>)", subCommands);
     }
 
     @Override
@@ -40,13 +27,20 @@ public class Contact extends Command {
 
     private void subEdit() { // edit contact list entry
         System.out.println("edit");
-        System.out.println(contactsRead.nextLine());
+        try {
+            File contacts = new File(contactsFilename);
+            Scanner contactsRead = new Scanner(contacts);
+            System.out.println(contactsRead.nextLine());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void subAdd() { // add contact list entry
         System.out.println("add");
 
         try {
+            File contacts = new File(contactsFilename);
             FileWriter contactsWrite = new FileWriter(contacts);
             contactsWrite.write("sdasdasdasd");
             contactsWrite.close();
