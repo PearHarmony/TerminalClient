@@ -71,7 +71,7 @@ public class TerminalMain {
 
     private void initDefaultScreen() { // Init GUI Content
         TextBox msgBox = new TextBox( // massage box
-                new TerminalSize(80, 1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END, GridLayout.Alignment.CENTER));
+                new TerminalSize(100, 1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END, GridLayout.Alignment.CENTER));
         msgBox.setReadOnly(false); // allow user input for massage box
 
         // create button to send messages and commands
@@ -80,7 +80,7 @@ public class TerminalMain {
         sendBtn.addListener(btnLis); // bind listener
 
         msgHistory = new AutoScrollTextBox( // message history box
-                new TerminalSize(80, 18));
+                new TerminalSize(100, 22));
         msgHistory.setReadOnly(true); // disable user input
 
         // add components to grid row 0

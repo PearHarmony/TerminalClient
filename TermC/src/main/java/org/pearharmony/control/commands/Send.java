@@ -6,7 +6,7 @@ import java.io.File;
 public class Send extends Command {
 
     public Send(TerminalMain ui, String[] subCommands) {
-        super(ui, "send", "/send <img:audio> <recipient> <filepath>", subCommands);
+        super(ui, "send", "/send <img:audio> <recipient> <filepath[path can not contain spaces]>", subCommands);
     }
 
     @Override

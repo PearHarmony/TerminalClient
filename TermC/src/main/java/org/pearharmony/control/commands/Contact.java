@@ -17,9 +17,9 @@ public class Contact extends Command {
         if (subCommands.length > 1 && subCommands.length < 5) {
             contactBook = new Contacts();
             switch (subCommands[1]) { // possible subcommands
-                case "add" -> subAdd();
-                case "remove" -> subRemove();
-                case "edit" -> subEdit();
+                case "add", "+" -> subAdd();
+                case "remove", "del", "-" -> subRemove();
+                case "edit", "e" -> subEdit();
                 default -> errorSyntax();
             }
         } else { errorSyntax(); }
