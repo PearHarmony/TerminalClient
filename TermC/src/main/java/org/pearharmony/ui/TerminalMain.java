@@ -123,7 +123,8 @@ public class TerminalMain {
         String[] errorMSG = { // simple possible errors without arguments
                 "generic error",
                 "Command not found!",
-                "The file you tried to send couldn't be found! Please check the path and try again."
+                "The file you tried to send couldn't be found! Please check the path and try again.",
+                "The contact could not be added to your address book! Either the name contains a '#' or you are trying to create a duplicate."
         };
         runFunc.printTo_msgHistory("Error: " + errorMSG[errIndex]);
     }

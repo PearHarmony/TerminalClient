@@ -3,11 +3,10 @@
 package org.pearharmony.control.commands;
 
 import org.pearharmony.ui.TerminalMain;
-import java.io.*;
-import java.util.Scanner;
+import org.pearharmony.data.Contacts;
 
 public class Contact extends Command {
-    private final String contactsFilename = "contacts";
+    private Contacts contactBook;
 
     public Contact(TerminalMain ui, String[] subCommands) {
         super(ui, "contact", "/contact <add:remove:edit> <name> (<ip>)", subCommands);
@@ -15,7 +14,8 @@ public class Contact extends Command {
 
     @Override
     protected void decodeCommand() { // decode an execute subcommands
-        if (subCommands.length > 1 && subCommands.length < 4) {
+        if (subCommands.length > 1 && subCommands.length < 5) {
+            contactBook = new Contacts();
             switch (subCommands[1]) { // possible subcommands
                 case "add" -> subAdd();
                 case "remove" -> subRemove();
@@ -27,26 +27,15 @@ public class Contact extends Command {
 
     private void subEdit() { // edit contact list entry
         System.out.println("edit");
-        try {
-            File contacts = new File(contactsFilename);
-            Scanner contactsRead = new Scanner(contacts);
-            System.out.println(contactsRead.nextLine());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     private void subAdd() { // add contact list entry
-        System.out.println("add");
-
-        try {
-            File contacts = new File(contactsFilename);
-            FileWriter contactsWrite = new FileWriter(contacts);
-            contactsWrite.write("sdasdasdasd");
-            contactsWrite.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        if (subCommands.length == 4) {
+            if (contactBook.addContact(subCommands[2],subCommands[3]) == 0) {
+                ui.displayText("Contact added - Name: " + subCommands[2] + " IP: " + subCommands[3]);
+            } else { ui.displayError(3); }
+        } else { errorSyntax(); }
     }
 
     private void subRemove() { // remove contact list entry
