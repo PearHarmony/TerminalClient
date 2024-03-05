@@ -65,7 +65,7 @@ public class TerminalMain {
             gui.addWindow(window); // add window to terminal ui
 
         } catch (IOException e) { // creation fall fallback IO-error
-            throw new RuntimeException("The GUI couldn't be created");
+            throw new RuntimeException("The GUI couldn't be created!");
         }
     }
 
@@ -105,7 +105,7 @@ public class TerminalMain {
 
         // update screen
         try { gui.updateScreen(); }
-        catch (IOException e) { throw new RuntimeException("The GUI couldn't be created"); }
+        catch (IOException e) { throw new RuntimeException("The GUI couldn't be created!"); }
 
         // setup RunFunction instance with access to UI
         runFunc.setupGUIFunction(msgBox, msgHistory);
