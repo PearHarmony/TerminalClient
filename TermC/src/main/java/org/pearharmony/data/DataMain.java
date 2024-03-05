@@ -3,7 +3,8 @@
 package org.pearharmony.data;
 
 public class DataMain {
-    private MsgTrans msgTrans;
+    private final MsgTrans msgTrans;
+
     public DataMain() {
         msgTrans = new MsgTrans();
     }

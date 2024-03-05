@@ -18,7 +18,7 @@ public class AutoScrollTextBox extends TextBox {
     public AutoScrollTextBox addLineAndAtTheTop(String line) {
         if (getLineCount() > 100) {
             do {
-                removeLine(getLineCount()-1);
+                removeLine(getLineCount() - 1);
             } while (getLineCount() > 100);
         }
 

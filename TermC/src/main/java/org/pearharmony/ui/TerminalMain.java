@@ -17,8 +17,8 @@ import java.util.TimerTask;
 public class TerminalMain {
 
     // Reference to control and runFunction
-    private Control ctrl;
-    private RunFunction runFunc;
+    private final Control ctrl;
+    private final RunFunction runFunc;
 
     // global base blocks
     private Panel contentPanel;
@@ -71,8 +71,7 @@ public class TerminalMain {
 
     private void initDefaultScreen() { // Init GUI Content
         TextBox msgBox = new TextBox( // massage box
-                new TerminalSize(80, 1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END,
-                GridLayout.Alignment.CENTER));
+                new TerminalSize(80, 1)).setLayoutData(GridLayout.createLayoutData(GridLayout.Alignment.END, GridLayout.Alignment.CENTER));
         msgBox.setReadOnly(false); // allow user input for massage box
 
         // create button to send messages and commands
@@ -98,14 +97,19 @@ public class TerminalMain {
         // regular timer for receiving msg's
         TimerTask taskTimer = new TimerTask() {
             @Override
-            public void run() { runFunc.timerTick(); }
+            public void run() {
+                runFunc.timerTick();
+            }
         };
         Timer timerUnit = new Timer();
         timerUnit.schedule(taskTimer, 2000, 2); // start after 2 sek every 2ms
 
         // update screen
-        try { gui.updateScreen(); }
-        catch (IOException e) { throw new RuntimeException("The GUI couldn't be created!"); }
+        try {
+            gui.updateScreen();
+        } catch (IOException e) {
+            throw new RuntimeException("The GUI couldn't be created!");
+        }
 
         // setup RunFunction instance with access to UI
         runFunc.setupGUIFunction(msgBox, msgHistory);
@@ -118,31 +122,37 @@ public class TerminalMain {
     }
 
     public void displayError(int errIndex) {
-        String[] errorMSG = { // simple possible errors without arguments
+        String[] errorMSG = { // possible simple errors without arguments
                 "generic error",
                 "Command not found!",
                 "The file you tried to send couldn't be found! Please check the path and try again.",
                 "The contact could not be added to your address book! Either the name contains a '#' or you are trying to create a duplicate.",
-                "The name and ip of an address book entry can't be the same!",
-                "The contact your trying to delete couldn't be found!",
+                "The name and ip of an address book entry can't be the same!", "The contact your trying to delete couldn't be found!",
                 "Something went wrong wile editing the contact! Your address book may be couped!"
         };
         runFunc.printTo_msgHistory("Error: " + errorMSG[errIndex]);
     }
 
     // display complex errors
-    public void displayError(String error) { runFunc.printTo_msgHistory("Error: " + error); }
+    public void displayError(String error) {
+        runFunc.printTo_msgHistory("Error: " + error);
+    }
 
     // display arbitrary text to msg history
-    public void displayText(String text) { runFunc.printTo_msgHistory("System Massage:" + text); }
+    public void displayText(String text) {
+        runFunc.printTo_msgHistory("System Massage:" + text);
+    }
 
     public void fileSendImg(String path, String recipient) {
         runFunc.printTo_msgHistory("You: send image \"" + path + "\" to @" + recipient);
     }
+
     public void fileSendAudio(String path, String recipient) {
         runFunc.printTo_msgHistory("You: send audio file \"" + path + "\" to @" + recipient);
     }
 
     // clear message history
-    public void clearHistory() { msgHistory.setText(""); }
+    public void clearHistory() {
+        msgHistory.setText("");
+    }
 }

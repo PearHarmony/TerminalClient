@@ -22,12 +22,10 @@ public class Contacts {
     private void createContactFile() {
         File contacts = new File(contactsFilename);
         if (!contacts.exists()) {
-            try { contacts.createNewFile(); }
-            catch (IOException e) {
-                System.out.println(
-                        "Something is dramatically wrong, but you can continue to use the software at your own risk. " +
-                                "To fix the error, restart the software"
-                );
+            try {
+                contacts.createNewFile();
+            } catch (IOException e) {
+                System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
             }
             writeContactsToDisk();
         }
@@ -41,18 +39,17 @@ public class Contacts {
             Scanner contactsRead = new Scanner(contacts);
             contactFileData = contactsRead.nextLine();
         } catch (IOException e) {
-            throw new RuntimeException(
-                    "Something is dramatically wrong, the software is no longer usable. " +
-                            "To fix the error, restart the software"
-            );
+            throw new RuntimeException("Something is dramatically wrong, the software is no longer usable. To fix the error, restart the software");
         }
         contacts = contactFileData.split("#+");
     }
 
     private void writeContactsToDisk() {
         StringBuilder contactFileData = new StringBuilder();
-        for (String contact : contacts) { contactFileData.append(contact).append("#"); }
-        contactFileData.deleteCharAt(contactFileData.length()-1);
+        for (String contact : contacts) {
+            contactFileData.append(contact).append("#");
+        }
+        contactFileData.deleteCharAt(contactFileData.length() - 1);
 
         try {
             File contacts = new File(contactsFilename);
@@ -60,10 +57,7 @@ public class Contacts {
             contactsWrite.write(String.valueOf(contactFileData));
             contactsWrite.close();
         } catch (IOException e) {
-            System.out.println(
-                    "Something is dramatically wrong, but you can continue to use the software at your own risk. " +
-                            "To fix the error, restart the software"
-            );
+            System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
         }
     }
 
@@ -74,11 +68,13 @@ public class Contacts {
     public String getContactIP(String name) {
         // # -> control char = contact not found
 
-        int posContactIP = Arrays.asList(contacts).indexOf(name)+1;
+        int posContactIP = Arrays.asList(contacts).indexOf(name) + 1;
 
         if (posContactIP != 0) {
             return contacts[posContactIP];
-        } else { return "#"; }
+        } else {
+            return "#";
+        }
     }
 
     public int addContact(String name, String ip) {
@@ -86,10 +82,14 @@ public class Contacts {
         // 1 -> contact already existing or identical with other contact (ip or name)
         // 2 -> contact contains unsupported chars
 
-        if (name.matches("#") || ip.matches("#")) { return 2; }
+        if (name.matches("#") || ip.matches("#")) {
+            return 2;
+        }
 
         for (int i = contacts.length - 1; i >= 0; i--) {
-            if (contacts[i].equals(name) || contacts[i].equals(ip)) { return 1; }
+            if (contacts[i].equals(name) || contacts[i].equals(ip)) {
+                return 1;
+            }
         }
 
         int contactsAltMax = contacts.length;
@@ -104,13 +104,14 @@ public class Contacts {
     }
 
     public int removeContact(String name) {
-        // 0 ->
+        // 0 -> success
         // 1 -> entry no found
 
         int posContact = Arrays.asList(contacts).indexOf(name);
 
-        if (posContact == -1 || posContact == contacts.length - 1) { return 1; }
-        else {
+        if (posContact == -1 || posContact == contacts.length - 1) {
+            return 1;
+        } else {
             contacts[posContact + 1] = "";
             contacts[posContact] = "";
             writeContactsToDisk();

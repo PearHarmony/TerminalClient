@@ -12,13 +12,13 @@ import org.pearharmony.control.Control;
 import org.pearharmony.ui.lanternaFix.AutoScrollTextBox;
 
 public class RunFunction {
-    private Control ctrl; // reference to control
+    private final Control ctrl; // reference to control
 
     // make editable UI elements global
     private TextBox msgBox;
     private AutoScrollTextBox msgHistory;
 
-    public RunFunction(Control ctrl){
+    public RunFunction(Control ctrl) {
         this.ctrl = ctrl;
     }
 
@@ -43,7 +43,7 @@ public class RunFunction {
     public void timerTick() { // regular timer function
         // check for new message and display if new
         String latestMsg = ctrl.getLatestMsgData();
-        if(!latestMsg.isEmpty()) {
+        if (!latestMsg.isEmpty()) {
             msgHistory.addLineAndAtTheTop(latestMsg);
         }
     }
