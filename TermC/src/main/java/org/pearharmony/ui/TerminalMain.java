@@ -124,7 +124,10 @@ public class TerminalMain {
                 "generic error",
                 "Command not found!",
                 "The file you tried to send couldn't be found! Please check the path and try again.",
-                "The contact could not be added to your address book! Either the name contains a '#' or you are trying to create a duplicate."
+                "The contact could not be added to your address book! Either the name contains a '#' or you are trying to create a duplicate.",
+                "The name and ip of an address book entry can't be the same!",
+                "The contact your trying to delete couldn't be found!",
+                "Something went wrong wile editing the contact! Your address book may be couped!"
         };
         runFunc.printTo_msgHistory("Error: " + errorMSG[errIndex]);
     }

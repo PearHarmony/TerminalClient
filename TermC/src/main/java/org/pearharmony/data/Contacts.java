@@ -60,7 +60,13 @@ public class Contacts {
     }
 
     public String getContactIP(String name) {
-        return "";
+        // # -> control char = contact not found
+
+        int posContactIP = Arrays.asList(contacts).indexOf(name)+1;
+
+        if (posContactIP != 0) {
+            return contacts[posContactIP];
+        } else { return "#"; }
     }
 
     public int addContact(String name, String ip) {
@@ -86,7 +92,18 @@ public class Contacts {
     }
 
     public int removeContact(String name) {
+        // 0 ->
+        // 1 -> entry no found
 
-        return 0;
+        int posContact = Arrays.asList(contacts).indexOf(name);
+
+        if (posContact == -1 || posContact == contacts.length - 1) { return 1; }
+        else {
+            contacts[posContact + 1] = "";
+            contacts[posContact] = "";
+            writeContactsToDisk();
+            return 0;
+        }
+
     }
 }
