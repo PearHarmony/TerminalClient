@@ -15,6 +15,7 @@ public class AutoScrollTextBox extends TextBox {
         super(preferredSize);
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public AutoScrollTextBox addLineAndAtTheTop(String line) {
         if (getLineCount() > 100) {
             do {

@@ -15,12 +15,9 @@ public class MsgTrans {
         return msg;
     }
 
-    public int delMsg(String _msg) { // deleted msg after read verification
+    public void delMsg(String _msg) { // deleted msg after read verification
         if (_msg.matches(msg)) {
             msg = "";
-            return 0;
-        } else {
-            return 1;
         }
     }
 }

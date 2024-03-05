@@ -16,8 +16,6 @@ import java.util.TimerTask;
 
 public class TerminalMain {
 
-    // Reference to control and runFunction
-    private final Control ctrl;
     private final RunFunction runFunc;
 
     // global base blocks
@@ -29,7 +27,7 @@ public class TerminalMain {
     private AutoScrollTextBox msgHistory;
 
     public TerminalMain(Control ctrl) {
-        this.ctrl = ctrl;
+        // Reference to control and runFunction
         runFunc = new RunFunction(ctrl);
     }
 

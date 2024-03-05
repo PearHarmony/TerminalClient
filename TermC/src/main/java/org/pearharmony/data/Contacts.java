@@ -19,6 +19,7 @@ public class Contacts {
         readContactsFromDisk();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void createContactFile() {
         File contacts = new File(contactsFilename);
         if (!contacts.exists()) {

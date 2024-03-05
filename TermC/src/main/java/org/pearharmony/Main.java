@@ -1,5 +1,5 @@
 /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *   programm:                  PearHarmony TerminalClient
+ *   program:                  PearHarmony TerminalClient
  *   function:                  A simple pear-to-pear terminal massager compatible with other PearHarmony clients
  *   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *   author:                    C. Prickartz (UI + Control + Dataflow) & V. Tica (Network)
