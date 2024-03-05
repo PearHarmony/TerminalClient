@@ -3,7 +3,7 @@
 /*
     This class contains all ui functions trigger by an action event. In addition, this class handles almost all output
     to the client massage history.
- */
+*/
 
 package org.pearharmony.ui;
 

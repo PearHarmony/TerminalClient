@@ -1,3 +1,5 @@
+// @C. Prickartz
+
 package org.pearharmony.data.messages;
 
 import org.pearharmony.data.MsgTrans;

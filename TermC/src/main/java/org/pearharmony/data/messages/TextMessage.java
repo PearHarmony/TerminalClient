@@ -1,6 +1,6 @@
-package org.pearharmony.data.messages;
+// @C. Prickartz
 
-import org.pearharmony.data.MsgTrans;
+package org.pearharmony.data.messages;
 
 public class TextMessage extends DefaultMessage {
     public TextMessage(String addresse) {
