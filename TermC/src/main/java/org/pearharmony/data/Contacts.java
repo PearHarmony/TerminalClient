@@ -23,7 +23,12 @@ public class Contacts {
         File contacts = new File(contactsFilename);
         if (!contacts.exists()) {
             try { contacts.createNewFile(); }
-            catch (IOException e) { throw new RuntimeException(e); }
+            catch (IOException e) {
+                System.out.println(
+                        "Something is dramatic wrong, but you can continue to use the software at your own risk. " +
+                                "To fix the error, restart the software"
+                );
+            }
             writeContactsToDisk();
         }
     }
@@ -35,8 +40,12 @@ public class Contacts {
             File contacts = new File(contactsFilename);
             Scanner contactsRead = new Scanner(contacts);
             contactFileData = contactsRead.nextLine();
-        } catch (IOException e) { throw new RuntimeException(e); }
-
+        } catch (IOException e) {
+            throw new RuntimeException(
+                    "Something is dramatic wrong, the software is no longer usable. " +
+                            "To fix the error, restart the software"
+            );
+        }
         contacts = contactFileData.split("#+");
     }
 
@@ -51,7 +60,10 @@ public class Contacts {
             contactsWrite.write(String.valueOf(contactFileData));
             contactsWrite.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(
+                    "Something is dramatic wrong, but you can continue to use the software at your own risk. " +
+                            "To fix the error, restart the software"
+            );
         }
     }
 
@@ -104,6 +116,5 @@ public class Contacts {
             writeContactsToDisk();
             return 0;
         }
-
     }
 }
