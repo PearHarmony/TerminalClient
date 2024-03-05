@@ -33,8 +33,8 @@ public class RunFunction {
         if (msgText.matches("^/[^/]*$")) { // match for slash at string start to identify command
             ctrl.executeCommand(msgText);
         } else if (msgText.matches("^@[^@]*$")) { // match for at at string start to identify outgoing msg
-            //msgHistory.addLine("You: " + msgText); // display own msg's
-            msgHistory.addLineAndAtTheTop("You: " + msgText);
+            msgHistory.addLineAndAtTheTop("You: " + msgText); // display own msg's
+            ctrl.sendMessage(msgText);
         }
 
         msgBox.setText(""); // clear massage box

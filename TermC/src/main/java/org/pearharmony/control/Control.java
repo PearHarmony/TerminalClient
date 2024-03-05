@@ -52,6 +52,10 @@ public class Control {
         }
     }
 
+    public void sendMessage(String msgText) {
+        System.out.println("msg send!");
+    }
+
     // read last massage dat from data layer
     public String getLatestMsgData() { return data.readAndDelTransMsg(); }
 }
