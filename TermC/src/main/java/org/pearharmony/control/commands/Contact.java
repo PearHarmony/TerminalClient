@@ -3,7 +3,6 @@
 package org.pearharmony.control.commands;
 
 import org.pearharmony.ui.TerminalMain;
-
 import java.io.*;
 
 public class Contact extends Command {
@@ -47,11 +46,6 @@ public class Contact extends Command {
 
     private void subAdd() { // add contact list entry
         System.out.println("add");
-        try {
-            System.out.println(contactsRead.);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private void subRemove() { // remove contact list entry
