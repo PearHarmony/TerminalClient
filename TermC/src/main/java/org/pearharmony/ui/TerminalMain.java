@@ -101,7 +101,7 @@ public class TerminalMain {
             public void run() { runFunc.timerTick(); }
         };
         Timer timerUnit = new Timer();
-        timerUnit.schedule(taskTimer, 2000, 10); // start after 2 sek every 10ms
+        timerUnit.schedule(taskTimer, 2000, 2); // start after 2 sek every 2ms
 
         try { // update screen
             gui.updateScreen();
