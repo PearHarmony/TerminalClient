@@ -25,7 +25,7 @@ public class Contacts {
             try { contacts.createNewFile(); }
             catch (IOException e) {
                 System.out.println(
-                        "Something is dramatic wrong, but you can continue to use the software at your own risk. " +
+                        "Something is dramatically wrong, but you can continue to use the software at your own risk. " +
                                 "To fix the error, restart the software"
                 );
             }
@@ -42,7 +42,7 @@ public class Contacts {
             contactFileData = contactsRead.nextLine();
         } catch (IOException e) {
             throw new RuntimeException(
-                    "Something is dramatic wrong, the software is no longer usable. " +
+                    "Something is dramatically wrong, the software is no longer usable. " +
                             "To fix the error, restart the software"
             );
         }
@@ -61,7 +61,7 @@ public class Contacts {
             contactsWrite.close();
         } catch (IOException e) {
             System.out.println(
-                    "Something is dramatic wrong, but you can continue to use the software at your own risk. " +
+                    "Something is dramatically wrong, but you can continue to use the software at your own risk. " +
                             "To fix the error, restart the software"
             );
         }
