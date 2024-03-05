@@ -51,7 +51,7 @@ public class Contact extends Command {
             contactsWrite.write("sdasdasdasd");
             contactsWrite.close();
         } catch (IOException e) {
-
+            throw new RuntimeException(e);
         }
     }
 
