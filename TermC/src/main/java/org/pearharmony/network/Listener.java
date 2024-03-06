@@ -8,9 +8,7 @@ import java.net.*;
 import java.io.*;
 
 public class Listener implements Runnable {
-	// initialize socket and input stream
-	private Socket socket;
-	private ServerSocket server;
+    private ServerSocket server;
 	private int port;
 	public Handler handle;
 	//private Control control;
@@ -21,6 +19,7 @@ public class Listener implements Runnable {
 	}
 
 	// constructor with port
+	@SuppressWarnings("InfiniteLoopStatement")
 	public void run() {
 
 		try {
@@ -33,14 +32,15 @@ public class Listener implements Runnable {
 			// starts server and waits for a connection
 			try {
 
-				socket = server.accept();
+                // initialize socket and input stream
+                Socket socket = server.accept();
 				//handle connection
 				handle = new Handler(socket);
 				thread = new Thread(handle);
 				thread.start();
 
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
 			}
 		}
 

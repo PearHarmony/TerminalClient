@@ -8,12 +8,8 @@ import java.io.*;
 import java.net.*;
 
 public class Sender implements Runnable {
-	// initialize socket and input output streams
-	private Socket socket;
-	private DataOutputStream out;
-	private String address;
+    private String address;
 	private int port;
-	byte type;
 	byte[] data;
 
 	public Sender(String _address, int _port, byte[] _data) {
@@ -24,7 +20,10 @@ public class Sender implements Runnable {
 
 	public void run() {
 		// establish a connection
-		try {
+        // initialize socket and input output streams
+        Socket socket;
+        DataOutputStream out;
+        try {
 			socket = new Socket(address, port);
 			// sends output to the socket
 			out = new DataOutputStream(socket.getOutputStream());

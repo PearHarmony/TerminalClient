@@ -44,8 +44,6 @@ public class Handler implements Runnable {
                     Imsg.receive();
                     break;
                 case 0x02:
-                    //control.Recive(
-                            //new SoundMessage(getIP(), de.sound(de.cleanData(dog), System.getProperty("user.dir"))));
                     AudioMessage auMsg = new AudioMessage(getIP(),de.sound(de.cleanData(dog),System.getProperty("user.dir")).toString());
                     auMsg.receive();
                     break;
@@ -54,7 +52,7 @@ public class Handler implements Runnable {
             socket.close();
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
         }
     }
 
