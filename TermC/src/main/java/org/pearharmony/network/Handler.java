@@ -40,7 +40,7 @@ public class Handler implements Runnable {
                     tmsg.Recive();
                     break;
                 case 0x01:
-                    ImgMessage Imsg = new ImgMessage(getIP(),de.picture(de.cleanData(dog)));
+                    ImgMessage Imsg = new ImgMessage(getIP(),de.picture(de.cleanData(dog),System.getProperty("user.dir")).toString());
                     break;
                 case 0x02:
                     //control.Recive(
