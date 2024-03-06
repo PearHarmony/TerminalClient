@@ -15,7 +15,7 @@ public class Send extends Command {
 
     @Override
     protected void decodeCommand() {
-        if (subCommands.length > 1 && subCommands.length < 5) {
+        if (subCommands.length == 4) {
             switch (subCommands[1]) { // possible subcommands
                 case "img" -> sendIMG();
                 case "audio" -> sendAudio();
