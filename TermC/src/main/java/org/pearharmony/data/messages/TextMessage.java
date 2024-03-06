@@ -14,15 +14,15 @@ public class TextMessage extends DefaultMessage {
     @Override
     public void send() {
         Encoder enco = new Encoder();
-        netCtrl.send2Peer(address,10000,enco.text(data));
+        netCtrl.send2Peer(checkIfAddressIsInContacts(address),10000,enco.text(data));
     }
 
     @Override
-    public void recive() {
+    public void receive() {
         MsgTrans msgTrans = new MsgTrans();
         int transMsgResult;
         do {
-            transMsgResult = msgTrans.setMsg(address + ": " + data);
+            transMsgResult = msgTrans.setMsg(checkIfNameIsInContacts(address) + ": " + data);
         } while (transMsgResult != 0);
     }
 }

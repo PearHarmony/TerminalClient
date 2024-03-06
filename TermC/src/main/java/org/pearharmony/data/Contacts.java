@@ -80,6 +80,18 @@ public class Contacts {
         }
     }
 
+    public String getContactName(String ip) {
+        // # -> control char = contact not found
+
+        int posContactIP = Arrays.asList(contacts).indexOf(ip) - 1;
+
+        if (posContactIP > 0) {
+            return contacts[posContactIP];
+        } else {
+            return "#";
+        }
+    }
+
     public int addContact(String name, String ip) {
         // 0 -> success
         // 1 -> contact already existing or identical with other contact (ip or name)

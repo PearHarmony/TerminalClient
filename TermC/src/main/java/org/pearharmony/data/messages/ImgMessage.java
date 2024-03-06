@@ -16,15 +16,15 @@ public class ImgMessage extends DefaultMessage {
     @Override
     public void send() {
         Encoder enco = new Encoder();
-        netCtrl.send2Peer(address,10000,enco.picture(Paths.get(data)));
+        netCtrl.send2Peer(checkIfAddressIsInContacts(address),10000,enco.picture(Paths.get(data)));
     }
 
     @Override
-    public void recive() {
+    public void receive() {
         MsgTrans msgTrans = new MsgTrans();
         int transMsgResult;
         do {
-            transMsgResult = msgTrans.setMsg(address + ": You received a new image: " + data);
+            transMsgResult = msgTrans.setMsg(checkIfNameIsInContacts(address) + ": You received a new image: " + data);
         } while (transMsgResult != 0);
     }
 }

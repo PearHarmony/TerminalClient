@@ -2,6 +2,7 @@
 
 package org.pearharmony.data.messages;
 
+import org.pearharmony.data.Contacts;
 import org.pearharmony.data.MsgTrans;
 import org.pearharmony.network.Encoder;
 import org.pearharmony.network.NetworkControler;
@@ -22,5 +23,27 @@ public abstract class DefaultMessage {
 
     public abstract void send();
 
-    public abstract void recive();
+    public abstract void receive();
+
+    protected String checkIfAddressIsInContacts(String recipient) {
+        Contacts addressBook = new Contacts();
+        String address = addressBook.getContactIP(recipient);
+
+        if (address.equals("#")) {
+            return recipient;
+        } else {
+            return address;
+        }
+    }
+
+    protected String checkIfNameIsInContacts(String sender) {
+        Contacts addressBook = new Contacts();
+        String name = addressBook.getContactName(sender);
+
+        if (name.equals("#")) {
+            return sender;
+        } else {
+            return name;
+        }
+    }
 }
