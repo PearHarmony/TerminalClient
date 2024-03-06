@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Contacts {
 
     private final String contactsFilename = "contacts.pearharmony.file.dfwrg43t45dfgASDu3rufsuZGSUFefwefwfw3r";
-    private String[] contacts = {
+    private String[] contacts = { // contacts array always contains sample entry = do not remove!
             "ThisIsASampleEntryToShowHowThisFileFormatWorks_ThisIsTheUsername",
             "ThisIsASampleEntryToShowHowThisFileFormatWorks_ThisIsTheIP"
     };
@@ -22,7 +22,7 @@ public class Contacts {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    private void createContactFile() {
+    private void createContactFile() { // create new contact file if it is no found
         File contacts = new File(contactsFilename);
         if (!contacts.exists()) {
             try {
@@ -34,7 +34,7 @@ public class Contacts {
         }
     }
 
-    private void readContactsFromDisk() {
+    private void readContactsFromDisk() { // read contact file from disk
         String contactFileData;
 
         try {
@@ -44,17 +44,17 @@ public class Contacts {
         } catch (IOException e) {
             throw new RuntimeException("Something is dramatically wrong, the software is no longer usable. To fix the error, restart the software");
         }
-        contacts = contactFileData.split("#+");
+        contacts = contactFileData.split("#+"); // split contact string in array at control char '#'
     }
 
-    private void writeContactsToDisk() {
+    private void writeContactsToDisk() { // write file to disk
         StringBuilder contactFileData = new StringBuilder();
-        for (String contact : contacts) {
+        for (String contact : contacts) { // convert contacts array to single string
             contactFileData.append(contact).append("#");
         }
-        contactFileData.deleteCharAt(contactFileData.length() - 1);
+        contactFileData.deleteCharAt(contactFileData.length() - 1); // remove last char -> always '#'
 
-        try {
+        try { // write to disk
             File contacts = new File(contactsFilename);
             FileWriter contactsWrite = new FileWriter(contacts);
             contactsWrite.write(String.valueOf(contactFileData));
@@ -64,16 +64,17 @@ public class Contacts {
         }
     }
 
-    private String[] add2RowsToArray(String[] contacts) {
+    private String[] add2RowsToArray(String[] contacts) { // add to rows to array and return
         return Arrays.copyOf(contacts, contacts.length + 2);
     }
 
     public String getContactIP(String name) {
         // # -> control char = contact not found
 
+        // get position of name in array -> add one for address index
         int posContactIP = Arrays.asList(contacts).indexOf(name) + 1;
 
-        if (posContactIP != 0) {
+        if (posContactIP != 0) { // check if lookup was successful
             return contacts[posContactIP];
         } else {
             return "#";
@@ -83,9 +84,10 @@ public class Contacts {
     public String getContactName(String ip) {
         // # -> control char = contact not found
 
+        // get position of ip in array -> subtracted one for name index
         int posContactIP = Arrays.asList(contacts).indexOf(ip) - 1;
 
-        if (posContactIP > 0) {
+        if (posContactIP > 0) { // check if lookup was successful
             return contacts[posContactIP];
         } else {
             return "#";
@@ -97,19 +99,21 @@ public class Contacts {
         // 1 -> contact already existing or identical with other contact (ip or name)
         // 2 -> contact contains unsupported chars
 
+        // check if name is valid
         if (name.matches("#") || ip.matches("#")) {
             return 2;
         }
 
-        for (int i = contacts.length - 1; i >= 0; i--) {
+        for (int i = contacts.length - 1; i >= 0; i--) { // check for duplicates
             if (contacts[i].equals(name) || contacts[i].equals(ip)) {
                 return 1;
             }
         }
 
         int contactsAltMax = contacts.length;
-        contacts = add2RowsToArray(contacts);
+        contacts = add2RowsToArray(contacts); // enlarge array
 
+        // add contact in to newly created space
         contacts[contactsAltMax] = name;
         contacts[contactsAltMax + 1] = ip;
 
@@ -122,11 +126,12 @@ public class Contacts {
         // 0 -> success
         // 1 -> entry no found
 
+        // search for contact
         int posContact = Arrays.asList(contacts).indexOf(name);
 
-        if (posContact == -1 || posContact == contacts.length - 1) {
+        if (posContact == -1 || posContact == contacts.length - 1) { // check if search was successful
             return 1;
-        } else {
+        } else { // remove contact from array and write to disk
             contacts[posContact + 1] = "";
             contacts[posContact] = "";
             writeContactsToDisk();

@@ -141,11 +141,11 @@ public class TerminalMain {
         runFunc.printTo_msgHistory("System Massage:" + text);
     }
 
-    public void fileSendImg(String path, String recipient) {
+    public void fileSendImg(String path, String recipient) { // display file received msg for image
         runFunc.printTo_msgHistory("You: send image \"" + path + "\" to @" + recipient);
     }
 
-    public void fileSendAudio(String path, String recipient) {
+    public void fileSendAudio(String path, String recipient) { // display file received msg for audio
         runFunc.printTo_msgHistory("You: send audio file \"" + path + "\" to @" + recipient);
     }
 
