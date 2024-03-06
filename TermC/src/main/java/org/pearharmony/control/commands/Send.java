@@ -2,6 +2,8 @@
 
 package org.pearharmony.control.commands;
 
+import org.pearharmony.data.messages.AudioMessage;
+import org.pearharmony.data.messages.ImgMessage;
 import org.pearharmony.ui.TerminalMain;
 import java.io.File;
 
@@ -32,12 +34,16 @@ public class Send extends Command {
 
     private void sendIMG() {
         if (checkPath() == 0) {
+            ImgMessage imgMsg = new ImgMessage(subCommands[2], subCommands[3]);
+            imgMsg.Send();
             ui.fileSendImg(subCommands[3], subCommands[2]);
         } else { errorFileMissing(); }
     }
 
     private void sendAudio() {
         if (checkPath() == 0) {
+            AudioMessage audioMessage = new AudioMessage(subCommands[2], subCommands[3]);
+            audioMessage.Send();
             ui.fileSendAudio(subCommands[3], subCommands[2]);
         } else { errorFileMissing(); }
     }

@@ -33,7 +33,8 @@ public class Handler implements Runnable {
             dog = in.readAllBytes();
             switch (de.getType(dog)) {
                 default:
-                //control.Recive(new TextMessage(getIP(),dog.toString()));
+                    TextMessage t2msg = new TextMessage(getIP(),de.text(de.cleanData(dog)));
+                    t2msg.Recive();
                 break;
                 case 0x00:
                     TextMessage tmsg = new TextMessage(getIP(),de.text(de.cleanData(dog)));
@@ -41,10 +42,13 @@ public class Handler implements Runnable {
                     break;
                 case 0x01:
                     ImgMessage Imsg = new ImgMessage(getIP(),de.picture(de.cleanData(dog),System.getProperty("user.dir")).toString());
+                    Imsg.Recive();
                     break;
                 case 0x02:
                     //control.Recive(
                             //new SoundMessage(getIP(), de.sound(de.cleanData(dog), System.getProperty("user.dir"))));
+                    AudioMessage auMsg = new AudioMessage(getIP(),de.sound(de.cleanData(dog),System.getProperty("user.dir")).toString());
+                    auMsg.Recive();
                     break;
             }
             // close connection

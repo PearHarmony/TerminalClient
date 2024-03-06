@@ -7,8 +7,8 @@ import java.net.*;
 
 public class Sender implements Runnable {
 	// initialize socket and input output streams
-	private Socket socket = null;
-	private DataOutputStream out = null;
+	private Socket socket;
+	private DataOutputStream out;
 	private String address;
 	private int port;
 	byte type;

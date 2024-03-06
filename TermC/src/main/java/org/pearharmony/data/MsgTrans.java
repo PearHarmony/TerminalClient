@@ -24,7 +24,7 @@ public class MsgTrans {
     }
 
     public void delMsg(String _msg) { // deleted msg after read verification
-        if (_msg.matches(msg)) {
+        if (_msg.equals(msg)) {
             msg = "";
         }
     }
