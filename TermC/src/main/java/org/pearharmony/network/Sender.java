@@ -1,4 +1,6 @@
 // @Veljko
+// edit: c. prickartz
+
 package org.pearharmony.network;
 
 // A Java program for a Client
@@ -26,11 +28,8 @@ public class Sender implements Runnable {
 			socket = new Socket(address, port);
 			// sends output to the socket
 			out = new DataOutputStream(socket.getOutputStream());
-		} catch (UnknownHostException u) {
-			System.out.println(u);
-			return;
-		} catch (IOException i) {
-			System.out.println(i);
+		} catch (IOException e) {
+			System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
 			return;
 		}
 
@@ -39,7 +38,7 @@ public class Sender implements Runnable {
 			out.close();
 			socket.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
 		}
 	}
 }

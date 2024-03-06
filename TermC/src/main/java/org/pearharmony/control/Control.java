@@ -49,7 +49,6 @@ public class Control {
     }
 
     public void sendMessage(String msgText) {
-        System.out.println("msg send: " + msgText);
         String[] msgSplit = msgText.split("\\s+");
         StringBuilder msgOnly = new StringBuilder();
         String address = msgSplit[0];
@@ -58,8 +57,6 @@ public class Control {
         StringBuilder addressRemoveAt = new StringBuilder(address);
         addressRemoveAt.deleteCharAt(0);
         address = String.valueOf(addressRemoveAt);
-
-        System.out.println(address);
 
         for (String msgTextOnly : msgSplit) {
             msgOnly.append(msgTextOnly).append(" ");

@@ -14,8 +14,8 @@ public abstract class DefaultMessage {
     protected NetworkControler netCtrl;
     protected Encoder enco;
 
-    public DefaultMessage(String addresse, String data) {
-        this.address = addresse;
+    public DefaultMessage(String address, String data) {
+        this.address = address;
         this.data = data;
 
         netCtrl = new NetworkControler();
