@@ -7,10 +7,6 @@ import org.pearharmony.data.messages.TextMessage;
 import org.pearharmony.network.NetworkControler;
 import org.pearharmony.ui.TerminalMain;
 import org.pearharmony.data.DataMain;
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.io.IOException;
 
 public class Control {
 
@@ -73,7 +69,7 @@ public class Control {
         msgToSend = msgToSend.trim();
 
         TextMessage text = new TextMessage(address,msgToSend);
-        text.Send();
+        text.send();
     }
 
     // read last massage dat from data layer

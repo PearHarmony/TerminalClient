@@ -35,7 +35,7 @@ public class Send extends Command {
     private void sendIMG() {
         if (checkPath() == 0) {
             ImgMessage imgMsg = new ImgMessage(subCommands[2], subCommands[3]);
-            imgMsg.Send();
+            imgMsg.send();
             ui.fileSendImg(subCommands[3], subCommands[2]);
         } else { errorFileMissing(); }
     }
@@ -43,7 +43,7 @@ public class Send extends Command {
     private void sendAudio() {
         if (checkPath() == 0) {
             AudioMessage audioMessage = new AudioMessage(subCommands[2], subCommands[3]);
-            audioMessage.Send();
+            audioMessage.send();
             ui.fileSendAudio(subCommands[3], subCommands[2]);
         } else { errorFileMissing(); }
     }

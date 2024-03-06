@@ -13,13 +13,13 @@ public class AudioMessage extends DefaultMessage {
     }
 
     @Override
-    public void Send() {
+    public void send() {
         Encoder enco = new Encoder();
         netCtrl.send2Peer(address,10000,enco.sound(Paths.get(data)));
     }
 
     @Override
-    public void Recive() {
+    public void recive() {
         MsgTrans msgTrans = new MsgTrans();
         int transMsgResult;
         do {

@@ -8,7 +8,6 @@ import java.net.Socket;
 import org.pearharmony.data.messages.ImgMessage;
 import org.pearharmony.data.messages.AudioMessage;
 import org.pearharmony.data.messages.TextMessage;
-import org.pearharmony.control.*;
 
 public class Handler implements Runnable {
     private Socket socket;
@@ -34,21 +33,21 @@ public class Handler implements Runnable {
             switch (de.getType(dog)) {
                 default:
                     TextMessage t2msg = new TextMessage(getIP(),de.text(de.cleanData(dog)));
-                    t2msg.Recive();
+                    t2msg.recive();
                 break;
                 case 0x00:
                     TextMessage tmsg = new TextMessage(getIP(),de.text(de.cleanData(dog)));
-                    tmsg.Recive();
+                    tmsg.recive();
                     break;
                 case 0x01:
                     ImgMessage Imsg = new ImgMessage(getIP(),de.picture(de.cleanData(dog),System.getProperty("user.dir")).toString());
-                    Imsg.Recive();
+                    Imsg.recive();
                     break;
                 case 0x02:
                     //control.Recive(
                             //new SoundMessage(getIP(), de.sound(de.cleanData(dog), System.getProperty("user.dir"))));
                     AudioMessage auMsg = new AudioMessage(getIP(),de.sound(de.cleanData(dog),System.getProperty("user.dir")).toString());
-                    auMsg.Recive();
+                    auMsg.recive();
                     break;
             }
             // close connection

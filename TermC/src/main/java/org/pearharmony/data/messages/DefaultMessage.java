@@ -3,7 +3,6 @@
 package org.pearharmony.data.messages;
 
 import org.pearharmony.data.MsgTrans;
-import org.pearharmony.network.Decoder;
 import org.pearharmony.network.Encoder;
 import org.pearharmony.network.NetworkControler;
 
@@ -21,7 +20,7 @@ public abstract class DefaultMessage {
         netCtrl = new NetworkControler();
     }
 
-    public abstract void Send();
+    public abstract void send();
 
-    public abstract void Recive();
+    public abstract void recive();
 }
