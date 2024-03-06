@@ -3,8 +3,11 @@
 package org.pearharmony.control;
 
 import org.pearharmony.control.commands.*;
+import org.pearharmony.data.messages.TextMessage;
+import org.pearharmony.network.NetworkControler;
 import org.pearharmony.ui.TerminalMain;
 import org.pearharmony.data.DataMain;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +34,9 @@ public class Control {
                 The client is developed in Java using the Java JDK 17, Maven and the Terminal GUI library Lanterna.\s
                 Maven: https://maven.apache.org/ \s
                 Lanterna: https://github.com/mabe02/lanterna""");
+
+        NetworkControler netCtrl = new NetworkControler();
+        netCtrl.startListening(10000);
     }
 
     public void executeCommand(String command) { // execute a command
@@ -48,6 +54,26 @@ public class Control {
 
     public void sendMessage(String msgText) {
         System.out.println("msg send: " + msgText);
+        String[] msgSplit = msgText.split("\\s+");
+        StringBuilder msgOnly = new StringBuilder();
+        String address = msgSplit[0];
+        msgSplit[0] = "";
+
+        StringBuilder addressRemoveAt = new StringBuilder(address);
+        addressRemoveAt.deleteCharAt(0);
+        address = String.valueOf(addressRemoveAt);
+
+        System.out.println(address);
+
+        for (String msgTextOnly : msgSplit) {
+            msgOnly.append(msgTextOnly).append(" ");
+        }
+
+        String msgToSend = String.valueOf(msgOnly);
+        msgToSend = msgToSend.trim();
+
+        TextMessage text = new TextMessage(address,msgToSend);
+        text.Send();
     }
 
     // read last massage dat from data layer

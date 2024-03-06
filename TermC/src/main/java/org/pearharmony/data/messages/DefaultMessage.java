@@ -3,14 +3,22 @@
 package org.pearharmony.data.messages;
 
 import org.pearharmony.data.MsgTrans;
+import org.pearharmony.network.Decoder;
+import org.pearharmony.network.Encoder;
+import org.pearharmony.network.NetworkControler;
 
 public abstract class DefaultMessage {
     protected String address;
+    protected String data;
     protected MsgTrans msgTrans;
+    protected NetworkControler netCtrl;
+    protected Encoder enco;
 
-    public DefaultMessage(String addresse) {
+    public DefaultMessage(String addresse, String data) {
         this.address = addresse;
-        MsgTrans msgTrans = new MsgTrans();
+        this.data = data;
+
+        netCtrl = new NetworkControler();
     }
 
     public abstract void Send();

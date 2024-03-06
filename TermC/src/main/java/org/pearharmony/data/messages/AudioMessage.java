@@ -3,8 +3,8 @@
 package org.pearharmony.data.messages;
 
 public class AudioMessage extends DefaultMessage {
-    public AudioMessage(String addresse) {
-        super(addresse);
+    public AudioMessage(String addresse,String data) {
+        super(addresse,data);
     }
 
     @Override
