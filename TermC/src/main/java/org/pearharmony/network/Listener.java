@@ -11,7 +11,6 @@ public class Listener implements Runnable {
     private ServerSocket server;
 	private int port;
 	public Handler handle;
-	//private Control control;
 	Thread thread;
 
 	public Listener(int _port) {
