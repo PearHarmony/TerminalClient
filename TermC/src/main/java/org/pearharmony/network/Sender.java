@@ -4,6 +4,8 @@
 package org.pearharmony.network;
 
 // A Java program for a Client
+import org.pearharmony.data.messages.TextMessage;
+
 import java.io.*;
 import java.net.*;
 
@@ -28,7 +30,8 @@ public class Sender implements Runnable {
 			// sends output to the socket
 			out = new DataOutputStream(socket.getOutputStream());
 		} catch (IOException e) {
-			System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
+			TextMessage msg = new TextMessage(address,"Address not found!");
+			msg.receive();
 			return;
 		}
 
@@ -37,7 +40,8 @@ public class Sender implements Runnable {
 			out.close();
 			socket.close();
 		} catch (IOException e) {
-			System.out.println("Something is dramatically wrong, but you can continue to use the software at your own risk. To fix the error, restart the software");
+			TextMessage msg = new TextMessage(address,"Connection refused!");
+			msg.receive();
 		}
 	}
 }
