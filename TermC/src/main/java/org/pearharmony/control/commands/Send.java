@@ -5,6 +5,7 @@ package org.pearharmony.control.commands;
 import org.pearharmony.data.messages.AudioMessage;
 import org.pearharmony.data.messages.ImgMessage;
 import org.pearharmony.ui.TerminalMain;
+
 import java.io.File;
 
 public class Send extends Command {

@@ -1,13 +1,14 @@
 // @Veljko
 package org.pearharmony.network;
 
+import org.pearharmony.data.messages.AudioMessage;
+import org.pearharmony.data.messages.ImgMessage;
+import org.pearharmony.data.messages.TextMessage;
+
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
-import org.pearharmony.data.messages.ImgMessage;
-import org.pearharmony.data.messages.AudioMessage;
-import org.pearharmony.data.messages.TextMessage;
 
 public class Handler implements Runnable {
     private Socket socket;

@@ -3,10 +3,10 @@
 package org.pearharmony.control;
 
 import org.pearharmony.control.commands.*;
+import org.pearharmony.data.DataMain;
 import org.pearharmony.data.messages.TextMessage;
 import org.pearharmony.network.NetworkControler;
 import org.pearharmony.ui.TerminalMain;
-import org.pearharmony.data.DataMain;
 
 public class Control {
 
