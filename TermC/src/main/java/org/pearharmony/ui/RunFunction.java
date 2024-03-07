@@ -33,7 +33,7 @@ public class RunFunction {
         if (msgText.matches("^/.*")) { // match for slash at string start to identify command
             ctrl.executeCommand(msgText);
         } else if (msgText.matches("^@.*")) { // match for at at string start to identify outgoing msg
-            msgHistory.addLineAndAtTheTop("You: " + msgText); // display own msg's
+            msgHistory.addLineAndAtTheTop("you: " + msgText); // display own msg's
             ctrl.sendMessage(msgText);
         }
 

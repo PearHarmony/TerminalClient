@@ -142,11 +142,11 @@ public class TerminalMain {
     }
 
     public void fileSendImg(String path, String recipient) { // display file received msg for image
-        runFunc.printTo_msgHistory("You: send image \"" + path + "\" to @" + recipient);
+        runFunc.printTo_msgHistory("you: send image \"" + path + "\" to @" + recipient);
     }
 
     public void fileSendAudio(String path, String recipient) { // display file received msg for audio
-        runFunc.printTo_msgHistory("You: send audio file \"" + path + "\" to @" + recipient);
+        runFunc.printTo_msgHistory("you: send audio file \"" + path + "\" to @" + recipient);
     }
 
     // clear message history
