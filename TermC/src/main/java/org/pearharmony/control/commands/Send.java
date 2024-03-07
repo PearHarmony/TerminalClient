@@ -37,7 +37,7 @@ public class Send extends Command {
         if (checkPath() == 0) {
             ImgMessage imgMsg = new ImgMessage(subCommands[2].toLowerCase(), subCommands[3]);
             imgMsg.send();
-            ui.fileSendImg(subCommands[3].toLowerCase(), subCommands[2]);
+            ui.fileSendImg(subCommands[3], subCommands[2].toLowerCase());
         } else { errorFileMissing(); }
     }
 
