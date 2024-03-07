@@ -72,7 +72,7 @@ public class Contacts {
         // # -> control char = contact not found
 
         // get position of name in array -> add one for address index
-        int posContactIP = Arrays.asList(contacts).indexOf(name) + 1;
+        int posContactIP = Arrays.asList(contacts).indexOf(name.toLowerCase()) + 1;
 
         if (posContactIP != 0) { // check if lookup was successful
             return contacts[posContactIP];
@@ -85,7 +85,7 @@ public class Contacts {
         // # -> control char = contact not found
 
         // get position of ip in array -> subtracted one for name index
-        int posContactIP = Arrays.asList(contacts).indexOf(ip) - 1;
+        int posContactIP = Arrays.asList(contacts).indexOf(ip.toLowerCase()) - 1;
 
         if (posContactIP > 0) { // check if lookup was successful
             return contacts[posContactIP];
@@ -105,7 +105,7 @@ public class Contacts {
         }
 
         for (int i = contacts.length - 1; i >= 0; i--) { // check for duplicates
-            if (contacts[i].equals(name) || contacts[i].equals(ip)) {
+            if (contacts[i].equalsIgnoreCase(name) || contacts[i].equalsIgnoreCase(ip)) {
                 return 1;
             }
         }
@@ -114,8 +114,8 @@ public class Contacts {
         contacts = add2RowsToArray(contacts); // enlarge array
 
         // add contact in to newly created space
-        contacts[contactsAltMax] = name;
-        contacts[contactsAltMax + 1] = ip;
+        contacts[contactsAltMax] = name.toLowerCase();
+        contacts[contactsAltMax + 1] = ip.toLowerCase();
 
         writeContactsToDisk();
 
@@ -127,7 +127,7 @@ public class Contacts {
         // 1 -> entry no found
 
         // search for contact
-        int posContact = Arrays.asList(contacts).indexOf(name);
+        int posContact = Arrays.asList(contacts).indexOf(name.toLowerCase());
 
         if (posContact == -1 || posContact == contacts.length - 1) { // check if search was successful
             return 1;

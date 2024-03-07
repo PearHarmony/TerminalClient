@@ -29,24 +29,24 @@ public abstract class DefaultMessage {
     // check if recipient is in address book -> replace name when found
     protected String checkIfAddressIsInContacts(String recipient) {
         Contacts addressBook = new Contacts();
-        String address = addressBook.getContactIP(recipient);
+        String address = addressBook.getContactIP(recipient.toLowerCase());
 
         if (address.equals("#")) {
-            return recipient;
+            return recipient.toLowerCase();
         } else {
-            return address;
+            return address.toLowerCase();
         }
     }
 
     // check if sender is in address book -> replace ip when found
     protected String checkIfNameIsInContacts(String sender) {
         Contacts addressBook = new Contacts();
-        String name = addressBook.getContactName(sender);
+        String name = addressBook.getContactName(sender.toLowerCase());
 
         if (name.equals("#")) {
-            return sender;
+            return sender.toLowerCase();
         } else {
-            return name;
+            return name.toLowerCase();
         }
     }
 }

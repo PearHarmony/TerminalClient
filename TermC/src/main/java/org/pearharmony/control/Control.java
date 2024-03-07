@@ -36,9 +36,9 @@ public class Control {
     }
 
     public void executeCommand(String command) { // execute a command
-        command = command.toLowerCase();
         String[] splitCommand = command.split("\\s+"); //split command at space ignore double spaces
-        switch (splitCommand[0]) { // all possible commands
+
+        switch (splitCommand[0].toLowerCase()) { // all possible commands
             case "/contact" -> new Contact(ui, splitCommand);
             case "/clear-history" -> new ClearHistory(ui, splitCommand);
             case "/help" -> new Help(ui, splitCommand);

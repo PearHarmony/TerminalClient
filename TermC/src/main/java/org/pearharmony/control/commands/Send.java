@@ -17,7 +17,7 @@ public class Send extends Command {
     @Override
     protected void decodeCommand() {
         if (subCommands.length == 4) {
-            switch (subCommands[1]) { // possible subcommands
+            switch (subCommands[1].toLowerCase()) { // possible subcommands
                 case "img" -> sendIMG();
                 case "audio" -> sendAudio();
                 default -> errorSyntax();
@@ -35,17 +35,17 @@ public class Send extends Command {
 
     private void sendIMG() {
         if (checkPath() == 0) {
-            ImgMessage imgMsg = new ImgMessage(subCommands[2], subCommands[3]);
+            ImgMessage imgMsg = new ImgMessage(subCommands[2].toLowerCase(), subCommands[3]);
             imgMsg.send();
-            ui.fileSendImg(subCommands[3], subCommands[2]);
+            ui.fileSendImg(subCommands[3].toLowerCase(), subCommands[2]);
         } else { errorFileMissing(); }
     }
 
     private void sendAudio() {
         if (checkPath() == 0) {
-            AudioMessage audioMessage = new AudioMessage(subCommands[2], subCommands[3]);
+            AudioMessage audioMessage = new AudioMessage(subCommands[2].toLowerCase(), subCommands[3]);
             audioMessage.send();
-            ui.fileSendAudio(subCommands[3], subCommands[2]);
+            ui.fileSendAudio(subCommands[3], subCommands[2].toLowerCase());
         } else { errorFileMissing(); }
     }
 
