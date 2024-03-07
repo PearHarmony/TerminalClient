@@ -7,6 +7,7 @@
  *   created:                   2024-02-28
  *   last changed:              2024-03-DD
  *   development environment:   Windows 11 version 23H2, IntelliJ IDEA 2023.3.4 (Ultimate Edition), Amazon Corretto 17.0.10
+ *                              Windows 11 version 23H2, IntelliJ IDEA 2023.2 (Ultimate Edition), Amazon Corretto 17.0.10
  *   build system:              Apache Maven - version 3.9.5
  *   additional library's:      Lanterna version 3.1.1 by mabe02 - https://github.com/mabe02/lanterna
  *
