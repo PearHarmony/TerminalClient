@@ -10,7 +10,7 @@ import java.nio.file.StandardOpenOption;
 
 public class Decoder {
 
-    public byte[] cleanData(byte[] _data) {
+    public byte[] cleanData(byte[] _data) {//removes first byte from byte array, which is msg type indicator
         byte[] clean = new byte[_data.length - 1];
         for (int i = 0; i < clean.length; i++) {
             clean[i] = _data[i + 1];
@@ -20,7 +20,7 @@ public class Decoder {
 
     public byte getType(byte[] _data) {
         return _data[0];
-    }
+    }//returnes first byte from byte array, which is msg type indicator
     
 
     public String text(byte[] _data) {

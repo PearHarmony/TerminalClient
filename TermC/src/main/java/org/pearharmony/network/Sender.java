@@ -38,6 +38,7 @@ public class Sender implements Runnable {
 		}
 
 		try {
+			//close connection
 			out.write(data);
 			out.close();
 			socket.close();

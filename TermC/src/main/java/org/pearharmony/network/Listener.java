@@ -30,12 +30,12 @@ public class Listener implements Runnable {
 		}
 		while (true) {
 
-			// starts server and waits for a connection
+			// starts server and waits for a connection with a port
 			try {
 
                 // initialize socket and input stream
                 Socket socket = server.accept();
-				//handle connection
+				//handle connection, creates new thread with handler instance
 				handle = new Handler(socket);
 				thread = new Thread(handle);
 				thread.start();

@@ -8,6 +8,7 @@ import java.nio.file.Path;
 
 public class Encoder {
     public byte[] text(String _string) {
+        //encodes a string to byte array, sets first byte to type
         byte[] data = _string.getBytes(StandardCharsets.UTF_8);
         byte[] pack = new byte[data.length + 1];
         pack[0] = (byte) 0x00;
@@ -18,6 +19,7 @@ public class Encoder {
     }
 
     public byte[] picture(Path _path) {
+        //encodes a picture from path to byte array, sets first byte to type
         try {
             byte[] data = Files.readAllBytes(_path);
             byte[] pack = new byte[data.length + 1];
@@ -32,7 +34,7 @@ public class Encoder {
         }
     }
 
-    public byte[] sound(Path _path) {
+    public byte[] sound(Path _path) {//encodes a sound file from path to byte array, sets first byte to type
         try {
             byte[] data = Files.readAllBytes(_path);
             byte[] pack = new byte[data.length + 1];

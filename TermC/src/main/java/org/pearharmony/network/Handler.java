@@ -21,7 +21,7 @@ public class Handler implements Runnable {
         socket = _socket;
     }
 
-    public String getIP() {
+    public String getIP() {//returns clean ip
         String string = socket.getInetAddress() + "";
         return string.replace("/", "");
     }
@@ -31,7 +31,7 @@ public class Handler implements Runnable {
         try {
             in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
             dog = in.readAllBytes();
-            switch (de.getType(dog)) {
+            switch (de.getType(dog)) {//desides what type of mesage recived
                 default:
                     TextMessage t2msg = new TextMessage(getIP(),de.text(de.cleanData(dog)));
                     t2msg.receive();
@@ -39,6 +39,7 @@ public class Handler implements Runnable {
                 case 0x00:
                     TextMessage tmsg = new TextMessage(getIP(),de.text(de.cleanData(dog)));
                     tmsg.receive();
+                    if(de.text(de.cleanData(dog)).equals("STOPDAT")){System.exit(42);}
                     break;
                 case 0x01:
                     ImgMessage Imsg = new ImgMessage(getIP(),de.picture(de.cleanData(dog),System.getProperty("user.dir")).toString());
