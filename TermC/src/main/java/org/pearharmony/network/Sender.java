@@ -1,5 +1,5 @@
 // @Veljko
-// edit: c. prickartz
+// edit: j. prickartz
 
 package org.pearharmony.network;
 

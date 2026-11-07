@@ -2,7 +2,7 @@
  *   program:                   PearHarmony TerminalClient
  *   function:                  A simple pear-to-pear terminal massager compatible with other PearHarmony clients
  *   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *   author:                    C. Prickartz (UI + Control + Dataflow) & V. Tica (Network)
+ *   author:                    J. Prickartz (UI + Control + Dataflow) & V. Tica (Network)
  *   edit:                      -
  *   created:                   2024-02-28
  *   last changed:              2024-03-09
