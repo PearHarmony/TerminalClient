@@ -1,4 +1,4 @@
-// @C. Prickartz
+// @J. Prickartz
 
 /*
     This is a custom implementation of the Lenterna TextBox component. An add line method has been added, witch adds the

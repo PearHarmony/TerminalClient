@@ -1,4 +1,4 @@
-// @C. Prickartz
+// @J. Prickartz
 
 package org.pearharmony.ui;
 

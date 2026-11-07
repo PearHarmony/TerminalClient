@@ -1,4 +1,4 @@
-// @C. Prickartz
+// @J. Prickartz
 
 package org.pearharmony.control.commands;
 
@@ -24,7 +24,7 @@ public class Info extends Command {
         ui.displayText("""
                 
                 -> PearHarmony TerminalClient\s
-                -> made by https://pearharmony.aocalux.dev\s
+                -> made by https://pearharmony.github.io\s
                 -> GitHub: https://github.com/pearharmony\s
                 -> PearHarmony TerminalClient ist licensed under the GNU LESSER GENERAL PUBLIC LICENSE Version 2.1.\s
                 -> The client is developed in Java using the Java JDK 17, Maven and the Terminal GUI library Lanterna.\s
